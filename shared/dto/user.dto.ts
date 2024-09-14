@@ -1,5 +1,7 @@
+import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
 import { IsEmail, IsStrongPassword } from 'class-validator';
+import { UserRole } from '../../src/user/user.entity';
 
 export class CreateUserDto {
   @IsEmail()
@@ -12,7 +14,31 @@ export class CreateUserDto {
     minSymbols: 1,
     minUppercase: 1,
   })
-  password: number;
+  password: string;
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {}
+
+@Exclude()
+export class UserResponseDto {
+  @Expose()
+  id: number;
+
+  @Expose()
+  email: string;
+
+  @Expose()
+  role: UserRole;
+
+  @Expose()
+  @Transform(({ obj }) => obj.flavorVotes.map((vote) => vote.id))
+  flavorVoteIds: number[];
+
+  @Expose()
+  @Transform(({ obj }) => obj.temperatureVotes.map((vote) => vote.id))
+  temperatureVoteIds: number[];
+
+  @Expose()
+  @Transform(({ obj }) => obj.longevityVotes.map((vote) => vote.id))
+  longevityVoteIds: number[];
+}

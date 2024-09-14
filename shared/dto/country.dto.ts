@@ -1,5 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
 
 export class CreateCountryDto {
   @IsString()
@@ -12,3 +13,23 @@ export class CreateCountryDto {
 }
 
 export class UpdateCountryDto extends PartialType(CreateCountryDto) {}
+
+@Exclude()
+export class CountryResponseDto {
+  @Expose()
+  id: number;
+
+  @Expose()
+  name: string;
+
+  @Expose()
+  code: string;
+
+  @Expose()
+  @Transform(({ obj }) => obj.brands.map((brand) => brand.id))
+  brandIds: number[];
+
+  @Expose()
+  @Transform(({ obj }) => obj.origins.map((origin) => origin.id))
+  originIds: number[];
+}
