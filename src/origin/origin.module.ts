@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { OriginController } from './origin.controller';
 import { OriginService } from './origin.service';
-import { OriginController } from './origin.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
+import { Country } from '../country/country.entity';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([YerbaMate, Country])],
   controllers: [OriginController],
-  providers: [OriginService]
+  providers: [OriginService],
 })
 export class OriginModule {}
