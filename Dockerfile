@@ -13,11 +13,12 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Build the application
-RUN npm run build
+# Install nodemon globally
+RUN npm install -g nodemon
 
 # Expose the application port
 EXPOSE 3000
 
-# Start the application
+# Start the application with nodemon in development
+# TODO: change this to make sure this works on prod
 CMD ["npm", "run", "start:dev"]
