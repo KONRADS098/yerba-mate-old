@@ -1,5 +1,5 @@
-import { ProcessingMethod } from 'src/processing-method/processing-method.entity';
-import { YerbaMate } from 'src/yerba-mate/yerba-mate.entity';
+import { ProcessingMethod } from 'src/shared/entities/processing-method.entity';
+import { YerbaMate } from 'src/shared/entities/yerba-mate.entity';
 import { Entity, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity()

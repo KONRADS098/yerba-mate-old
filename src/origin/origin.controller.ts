@@ -9,12 +9,12 @@ import {
 } from '@nestjs/common';
 import { OriginService } from './origin.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateOriginDto,
-  OriginResponseDto,
-  UpdateOriginDto,
-} from '@shared/dto/origin.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  OriginResponseDto,
+  CreateOriginDto,
+  UpdateOriginDto,
+} from './origin.dto';
 
 @ApiTags('origin')
 @Controller('origin')

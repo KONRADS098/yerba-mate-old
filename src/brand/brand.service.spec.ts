@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BrandService } from './brand.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Brand } from './brand.entity';
+import { Brand } from '../shared/entities/brand.entity';
 import { Repository } from 'typeorm';
 
 describe('BrandService', () => {

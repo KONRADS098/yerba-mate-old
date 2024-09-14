@@ -9,18 +9,18 @@ import {
 } from '@nestjs/common';
 import { UserVoteService } from './user-vote.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateUserFlavorVoteDto,
-  UserFlavorVoteResponseDto,
-  UpdateUserFlavorVoteDto,
-  CreateUserLongevityVoteDto,
-  UserLongevityVoteResponseDto,
-  UpdateUserLongevityVoteDto,
-  CreateUserTemperatureVoteDto,
-  UserTemperatureVoteResponseDto,
-  UpdateUserTemperatureVoteDto,
-} from '@shared/dto/user-vote.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  UserFlavorVoteResponseDto,
+  CreateUserFlavorVoteDto,
+  UpdateUserFlavorVoteDto,
+  UserLongevityVoteResponseDto,
+  CreateUserLongevityVoteDto,
+  UpdateUserLongevityVoteDto,
+  UserTemperatureVoteResponseDto,
+  CreateUserTemperatureVoteDto,
+  UpdateUserTemperatureVoteDto,
+} from './user-vote.dto';
 
 @ApiTags('user-vote')
 @Controller('user-vote')

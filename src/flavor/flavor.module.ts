@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { FlavorService } from './flavor.service';
 import { FlavorController } from './flavor.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Flavor } from './flavor.entity';
+import { Flavor } from '../shared/entities/flavor.entity';
 import { UserFlavorVote } from 'src/user-vote/user-vote.entity';
 
 @Module({

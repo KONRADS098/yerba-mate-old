@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ProcessingMethod } from './processing-method.entity';
+import { ProcessingMethod } from '../shared/entities/processing-method.entity';
 import {
   CreateProcessingMethodDto,
   UpdateProcessingMethodDto,
-} from '@shared/dto/processing-method.dto';
+} from './processing-method.dto';
 
 @Injectable()
 export class ProcessingMethodService {

@@ -6,8 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Brand } from '../brand/brand.entity';
-import { Origin } from '../origin/origin.entity';
+import { Brand } from './brand.entity';
+import { Origin } from './origin.entity';
 
 @Entity()
 export class Country {

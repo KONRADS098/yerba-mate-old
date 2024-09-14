@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { OriginController } from './origin.controller';
 import { OriginService } from './origin.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
-import { Country } from '../country/country.entity';
-import { Origin } from './origin.entity';
+import { YerbaMate } from '../shared/entities/yerba-mate.entity';
+import { Country } from '../shared/entities/country.entity';
+import { Origin } from '../shared/entities/origin.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Origin, YerbaMate, Country])],

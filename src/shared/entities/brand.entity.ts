@@ -8,11 +8,11 @@ import {
   UpdateDateColumn,
   JoinColumn,
 } from 'typeorm';
-import { Country } from '../country/country.entity';
-import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
+import { Country } from './country.entity';
+import { YerbaMate } from './yerba-mate.entity';
 
 @Entity()
-export class Origin {
+export class Brand {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -22,17 +22,17 @@ export class Origin {
   @Column()
   countryId!: number;
 
-  @ManyToOne(() => Country, (country) => country.origins)
+  @ManyToOne(() => Country, (country) => country.brands)
   @JoinColumn({ name: 'countryId' })
   country!: Country;
-
-  @Column({ nullable: true })
-  region!: string;
 
   @Column({ type: 'text', nullable: true })
   description!: string;
 
-  @OneToMany(() => YerbaMate, (yerbaMate) => yerbaMate.origin)
+  @Column({ nullable: true })
+  website!: string;
+
+  @OneToMany(() => YerbaMate, (yerbaMate) => yerbaMate.brand)
   yerbaMates!: YerbaMate[];
 
   @CreateDateColumn()

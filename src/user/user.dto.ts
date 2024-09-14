@@ -1,7 +1,7 @@
 import { Expose, Transform } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
 import { IsEmail, IsStrongPassword } from 'class-validator';
-import { UserRole } from '../../src/user/user.entity';
+import { UserRole } from './user-role.enum';
 
 export class CreateUserDto {
   @IsEmail()

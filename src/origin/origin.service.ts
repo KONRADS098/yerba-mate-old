@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Origin } from './origin.entity';
-import { CreateOriginDto, UpdateOriginDto } from '@shared/dto/origin.dto';
+import { Origin } from '../shared/entities/origin.entity';
+import { CreateOriginDto, UpdateOriginDto } from './origin.dto';
 
 @Injectable()
 export class OriginService {

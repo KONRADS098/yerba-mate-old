@@ -1,10 +1,6 @@
 import { UserService } from './user.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateUserDto,
-  UserResponseDto,
-  UpdateUserDto,
-} from '@shared/dto/user.dto';
+
 import {
   Controller,
   Post,
@@ -15,6 +11,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { UserResponseDto, CreateUserDto, UpdateUserDto } from './user.dto';
 
 @ApiTags('user')
 @Controller('user')

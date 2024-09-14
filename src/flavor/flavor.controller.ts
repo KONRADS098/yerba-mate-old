@@ -9,12 +9,12 @@ import {
 } from '@nestjs/common';
 import { FlavorService } from './flavor.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateFlavorDto,
-  FlavorResponseDto,
-  UpdateFlavorDto,
-} from '@shared/dto/flavor.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  FlavorResponseDto,
+  CreateFlavorDto,
+  UpdateFlavorDto,
+} from './flavor.dto';
 
 @ApiTags('flavor')
 @Controller('flavor')

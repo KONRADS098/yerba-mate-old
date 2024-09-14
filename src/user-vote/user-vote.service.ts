@@ -1,11 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import {
-  UserFlavorVote,
-  UserLongevityVote,
-  UserTemperatureVote,
-} from './user-vote.entity';
+
 import {
   CreateUserFlavorVoteDto,
   UpdateUserFlavorVoteDto,
@@ -13,7 +9,12 @@ import {
   UpdateUserLongevityVoteDto,
   CreateUserTemperatureVoteDto,
   UpdateUserTemperatureVoteDto,
-} from '@shared/dto/user-vote.dto';
+} from './user-vote.dto';
+import {
+  UserFlavorVote,
+  UserLongevityVote,
+  UserTemperatureVote,
+} from '../shared/entities/user-vote.entity';
 
 @Injectable()
 export class UserVoteService {

@@ -9,12 +9,12 @@ import {
 } from '@nestjs/common';
 import { YerbaMateService } from './yerba-mate.service';
 import { plainToInstance } from 'class-transformer';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
   CreateYerbaMateDto,
-  YerbaMateResponseDto,
   UpdateYerbaMateDto,
-} from '@shared/dto/yerba-mate.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+  YerbaMateResponseDto,
+} from './yerba-mate.dto';
 
 @ApiTags('yerba-mate')
 @Controller('yerba-mate')

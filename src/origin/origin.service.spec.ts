@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { OriginService } from './origin.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Origin } from './origin.entity';
+import { Origin } from '../shared/entities/origin.entity';
 import { Repository } from 'typeorm';
 
 describe('OriginService', () => {

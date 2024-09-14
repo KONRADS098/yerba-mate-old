@@ -8,9 +8,9 @@ import {
   Check,
   JoinColumn,
 } from 'typeorm';
-import { User } from '../user/user.entity';
-import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
-import { Flavor } from '../flavor/flavor.entity';
+import { User } from './user.entity';
+import { Flavor } from './flavor.entity';
+import { YerbaMate } from './yerba-mate.entity';
 
 @Entity()
 export class UserFlavorVote {

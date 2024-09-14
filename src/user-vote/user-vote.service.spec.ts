@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserVoteService } from './user-vote.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import {
   UserFlavorVote,
   UserLongevityVote,
   UserTemperatureVote,
-} from './user-vote.entity';
-import { Repository } from 'typeorm';
+} from '../shared/entities/user-vote.entity';
 
 describe('UserVoteService', () => {
   let service: UserVoteService;

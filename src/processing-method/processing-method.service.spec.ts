@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProcessingMethodService } from './processing-method.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { ProcessingMethod } from './processing-method.entity';
+import { ProcessingMethod } from '../shared/entities/processing-method.entity';
 import { Repository } from 'typeorm';
 
 describe('ProcessingMethodService', () => {

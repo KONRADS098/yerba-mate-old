@@ -9,12 +9,12 @@ import {
 } from '@nestjs/common';
 import { CountryService } from './country.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateCountryDto,
-  CountryResponseDto,
-  UpdateCountryDto,
-} from '@shared/dto/country.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  CountryResponseDto,
+  CreateCountryDto,
+  UpdateCountryDto,
+} from './country.dto';
 
 @ApiTags('country')
 @Controller('country')

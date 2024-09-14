@@ -9,12 +9,13 @@ import {
 } from '@nestjs/common';
 import { ProcessingMethodService } from './processing-method.service';
 import { plainToInstance } from 'class-transformer';
+
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
   CreateProcessingMethodDto,
   ProcessingMethodResponseDto,
   UpdateProcessingMethodDto,
-} from '@shared/dto/processing-method.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+} from './processing-method.dto';
 
 @ApiTags('processing-method')
 @Controller('processing-method')

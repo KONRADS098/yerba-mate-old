@@ -10,14 +10,14 @@ import {
   ManyToMany,
   JoinColumn,
 } from 'typeorm';
-import { Brand } from '../brand/brand.entity';
-import { Origin } from '../origin/origin.entity';
-import { ProcessingMethod } from '../processing-method/processing-method.entity';
+import { Brand } from './brand.entity';
+import { Origin } from './origin.entity';
+import { ProcessingMethod } from './processing-method.entity';
 import {
   UserFlavorVote,
   UserTemperatureVote,
   UserLongevityVote,
-} from '../user-vote/user-vote.entity';
+} from './user-vote.entity';
 
 @Entity()
 export class YerbaMate {

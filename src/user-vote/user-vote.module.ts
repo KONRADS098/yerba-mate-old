@@ -7,9 +7,9 @@ import {
   UserLongevityVote,
   UserTemperatureVote,
 } from './user-vote.entity';
-import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
-import { Flavor } from '../flavor/flavor.entity';
-import { User } from '../user/user.entity';
+import { YerbaMate } from '../shared/entities/yerba-mate.entity';
+import { Flavor } from '../shared/entities/flavor.entity';
+import { User } from '../shared/entities/user.entity';
 
 @Module({
   imports: [

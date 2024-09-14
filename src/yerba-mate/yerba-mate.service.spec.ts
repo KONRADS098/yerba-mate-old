@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { YerbaMateService } from './yerba-mate.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { YerbaMate } from './yerba-mate.entity';
-import { ProcessingMethod } from '../processing-method/processing-method.entity';
+import { YerbaMate } from '../shared/entities/yerba-mate.entity';
+import { ProcessingMethod } from '../shared/entities/processing-method.entity';
 import { Repository } from 'typeorm';
 
 describe('YerbaMateService', () => {

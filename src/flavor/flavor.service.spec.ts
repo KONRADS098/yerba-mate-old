@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FlavorService } from './flavor.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Flavor } from './flavor.entity';
+import { Flavor } from '../shared/entities/flavor.entity';
 import { Repository } from 'typeorm';
 
 describe('FlavorService', () => {

@@ -9,12 +9,9 @@ import {
 } from '@nestjs/common';
 import { BrandService } from './brand.service';
 import { plainToInstance } from 'class-transformer';
-import {
-  CreateBrandDto,
-  BrandResponseDto,
-  UpdateBrandDto,
-} from '@shared/dto/brand.dto';
+
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { BrandResponseDto, CreateBrandDto, UpdateBrandDto } from './brand.dto';
 
 @ApiTags('brand')
 @Controller('brand')

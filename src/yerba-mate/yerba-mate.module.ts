@@ -2,15 +2,15 @@ import { Module } from '@nestjs/common';
 import { YerbaMateController } from './yerba-mate.controller';
 import { YerbaMateService } from './yerba-mate.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { YerbaMate } from './yerba-mate.entity';
-import { Brand } from '../brand/brand.entity';
-import { Origin } from '../origin/origin.entity';
-import { ProcessingMethod } from '../processing-method/processing-method.entity';
+import { YerbaMate } from '../shared/entities/yerba-mate.entity';
+import { Brand } from '../shared/entities/brand.entity';
+import { Origin } from '../shared/entities/origin.entity';
+import { ProcessingMethod } from '../shared/entities/processing-method.entity';
 import {
   UserFlavorVote,
   UserLongevityVote,
   UserTemperatureVote,
-} from '../user-vote/user-vote.entity';
+} from '../shared/entities/user-vote.entity';
 
 @Module({
   imports: [

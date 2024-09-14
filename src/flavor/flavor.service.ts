@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Flavor } from './flavor.entity';
-import { CreateFlavorDto, UpdateFlavorDto } from '@shared/dto/flavor.dto';
+import { Flavor } from '../shared/entities/flavor.entity';
+import { CreateFlavorDto, UpdateFlavorDto } from './flavor.dto';
 
 @Injectable()
 export class FlavorService {

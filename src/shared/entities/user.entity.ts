@@ -3,12 +3,8 @@ import {
   UserFlavorVote,
   UserTemperatureVote,
   UserLongevityVote,
-} from '../user-vote/user-vote.entity';
-
-export enum UserRole {
-  USER = 'user',
-  ADMIN = 'admin',
-}
+} from './user-vote.entity';
+import { UserRole } from '../../user/user-role.enum';
 
 @Entity()
 export class User {

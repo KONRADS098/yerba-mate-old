@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToMany,
 } from 'typeorm';
-import { YerbaMate } from '../yerba-mate/yerba-mate.entity';
+import { YerbaMate } from './yerba-mate.entity';
 
 @Entity()
 export class ProcessingMethod {

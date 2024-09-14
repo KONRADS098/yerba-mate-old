@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UserFlavorVote } from '../user-vote/user-vote.entity';
+import { UserFlavorVote } from './user-vote.entity';
 
 @Entity()
 export class Flavor {

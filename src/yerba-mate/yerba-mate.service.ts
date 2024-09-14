@@ -1,13 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
-import { YerbaMate } from './yerba-mate.entity';
-import { ProcessingMethod } from '../processing-method/processing-method.entity';
-import {
-  CreateYerbaMateDto,
-  UpdateYerbaMateDto,
-} from '@shared/dto/yerba-mate.dto';
-
+import { YerbaMate } from '../shared/entities/yerba-mate.entity';
+import { ProcessingMethod } from '../shared/entities/processing-method.entity';
+import { CreateYerbaMateDto, UpdateYerbaMateDto } from './yerba-mate.dto';
 @Injectable()
 export class YerbaMateService {
   constructor(
