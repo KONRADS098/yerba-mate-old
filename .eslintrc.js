@@ -1,7 +1,8 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: 'tsconfig.json',
+    ecmaVersion: 2020,
+    project: ['./tsconfig.json', './tsconfig.jest.json'],
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
@@ -15,7 +16,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'jest.config.mjs'],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

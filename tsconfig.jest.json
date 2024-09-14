@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "ES2021",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true
+    },
+    "include": ["jest.config.mjs", "src/**/*.ts", "test/**/*.ts"]
+}

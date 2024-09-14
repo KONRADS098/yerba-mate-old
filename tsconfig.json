@@ -25,10 +25,12 @@
   }, 
   "include": [
     "src/**/*", 
-    "shared/**/*"
+    "test/**/*.ts",
+    "src/**/*.spec.ts",
+    "shared/**/*",
+    "jest.config.mjs"
   ],
   "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
+    "node_modules"
   ]
 }
