@@ -10,12 +10,17 @@ import {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api');
+
+  app.enableCors();
+
   app.enableVersioning({
     type: VersioningType.URI,
     defaultVersion: '1',
   });
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+
   app.useGlobalInterceptors(
     new ClassSerializerInterceptor(app.get(Reflector), {
       strategy: 'excludeAll',
@@ -30,9 +35,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  SwaggerModule.setup('swagger', app, document, {
-    jsonDocumentUrl: 'swagger/json',
-  });
 
   await app.listen(3000);
 }
