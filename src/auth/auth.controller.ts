@@ -17,8 +17,7 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Login successful' })
   @ApiResponse({ status: 401, description: 'Invalid credentials' })
   async login(@Body() loginDto: LoginDto): Promise<LoginResponseDto> {
-    const token = await this.authService.login(loginDto);
-    console.log('Token:', token);
-    return plainToInstance(LoginResponseDto, token);
+    const tokens = await this.authService.login(loginDto);
+    return plainToInstance(LoginResponseDto, { ...tokens });
   }
 }

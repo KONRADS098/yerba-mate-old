@@ -15,6 +15,13 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:6
+    ports:
+      - '6379:6379'
+    networks:
+      - app-network
+
   app:
     build:
       context: .
@@ -33,6 +40,9 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
