@@ -1,5 +1,5 @@
 import { Exclude, Expose } from '@nestjs/class-transformer';
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { IsInt, IsPositive, Max, Min } from 'class-validator';
 
 export class CreateUserFlavorVoteDto {

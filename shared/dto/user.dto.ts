@@ -1,5 +1,5 @@
 import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { IsEmail, IsStrongPassword } from 'class-validator';
 import { UserRole } from '../../src/user/user.entity';
 

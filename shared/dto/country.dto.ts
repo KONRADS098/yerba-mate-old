@@ -1,4 +1,4 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
 

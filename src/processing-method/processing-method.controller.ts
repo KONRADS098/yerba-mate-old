@@ -8,14 +8,15 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProcessingMethodService } from './processing-method.service';
-
 import { plainToClass } from 'class-transformer';
 import {
   CreateProcessingMethodDto,
   ProcessingMethodResponseDto,
   UpdateProcessingMethodDto,
 } from '@shared/dto/processing-method.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('processing-method')
 @Controller('processing-method')
 export class ProcessingMethodController {
   constructor(
@@ -23,6 +24,13 @@ export class ProcessingMethodController {
   ) {}
 
   @Post()
+  @ApiOperation({ summary: 'Create a new processing method' })
+  @ApiResponse({
+    status: 201,
+    description: 'The processing method has been successfully created.',
+    type: ProcessingMethodResponseDto,
+  })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
   async create(
     @Body() createProcessingMethodDto: CreateProcessingMethodDto,
   ): Promise<ProcessingMethodResponseDto> {
@@ -33,6 +41,12 @@ export class ProcessingMethodController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Get all processing methods' })
+  @ApiResponse({
+    status: 200,
+    description: 'Return all processing methods.',
+    type: [ProcessingMethodResponseDto],
+  })
   async findAll(): Promise<ProcessingMethodResponseDto[]> {
     const processingMethods = await this.processingMethodService.findAll();
     return processingMethods.map((processingMethod) =>
@@ -41,12 +55,26 @@ export class ProcessingMethodController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Get a processing method by ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Return the processing method with the given ID.',
+    type: ProcessingMethodResponseDto,
+  })
+  @ApiResponse({ status: 404, description: 'Processing method not found.' })
   async findOne(@Param('id') id: number): Promise<ProcessingMethodResponseDto> {
     const processingMethod = await this.processingMethodService.findOne(id);
     return plainToClass(ProcessingMethodResponseDto, processingMethod);
   }
 
   @Put(':id')
+  @ApiOperation({ summary: 'Update a processing method by ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'The processing method has been successfully updated.',
+    type: ProcessingMethodResponseDto,
+  })
+  @ApiResponse({ status: 404, description: 'Processing method not found.' })
   async update(
     @Param('id') id: number,
     @Body() updateProcessingMethodDto: UpdateProcessingMethodDto,
@@ -59,6 +87,12 @@ export class ProcessingMethodController {
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete a processing method by ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'The processing method has been successfully deleted.',
+  })
+  @ApiResponse({ status: 404, description: 'Processing method not found.' })
   async remove(@Param('id') id: number): Promise<void> {
     return this.processingMethodService.remove(id);
   }
