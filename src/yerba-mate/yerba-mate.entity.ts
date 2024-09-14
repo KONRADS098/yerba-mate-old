@@ -41,9 +41,12 @@ export class YerbaMate {
   @JoinColumn({ name: 'originId' })
   origin!: Origin;
 
-  @ManyToMany(() => ProcessingMethod)
+  @ManyToMany(
+    () => ProcessingMethod,
+    (processingMethod) => processingMethod.yerbaMates,
+  )
   @JoinTable({
-    name: 'yerba_mate_processing_methods',
+    name: 'yerbaMateProcessingMethod',
     joinColumn: { name: 'yerbaMateId', referencedColumnName: 'id' },
     inverseJoinColumn: {
       name: 'processingMethodId',
@@ -75,7 +78,4 @@ export class YerbaMate {
 
   @UpdateDateColumn()
   updatedAt!: Date;
-
-  // Transient property to handle DTO data
-  processingMethodIds!: number[];
 }

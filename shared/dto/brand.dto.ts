@@ -1,4 +1,4 @@
-import { Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
 import {
   IsInt,
@@ -47,6 +47,8 @@ export class BrandResponseDto {
   website: string;
 
   @Expose()
-  @Transform(({ obj }) => obj.yerbaMates.map((yerbaMate) => yerbaMate.id))
+  @Transform(
+    ({ obj }) => obj.yerbaMates?.map((yerbaMate) => yerbaMate.id) || [],
+  )
   yerbaMateIds: number[];
 }

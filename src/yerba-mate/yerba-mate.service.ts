@@ -18,11 +18,14 @@ export class YerbaMateService {
   ) {}
 
   async create(createYerbaMateDto: CreateYerbaMateDto): Promise<YerbaMate> {
+    const { processingMethodIds, ...yerbaMateData } = createYerbaMateDto;
+
     const processingMethods = await this.processingMethodRepository.findBy({
-      id: In([createYerbaMateDto.processingMethodIds]),
+      id: In(processingMethodIds),
     });
+
     const yerbaMate = this.yerbaMateRepository.create({
-      ...createYerbaMateDto,
+      ...yerbaMateData,
       processingMethods,
     });
     return this.yerbaMateRepository.save(yerbaMate);

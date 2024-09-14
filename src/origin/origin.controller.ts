@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { OriginService } from './origin.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateOriginDto,
   OriginResponseDto,
@@ -33,7 +33,7 @@ export class OriginController {
     @Body() createOriginDto: CreateOriginDto,
   ): Promise<OriginResponseDto> {
     const origin = await this.originService.create(createOriginDto);
-    return plainToClass(OriginResponseDto, origin);
+    return plainToInstance(OriginResponseDto, origin);
   }
 
   @Get()
@@ -45,7 +45,7 @@ export class OriginController {
   })
   async findAll(): Promise<OriginResponseDto[]> {
     const origins = await this.originService.findAll();
-    return origins.map((origin) => plainToClass(OriginResponseDto, origin));
+    return origins.map((origin) => plainToInstance(OriginResponseDto, origin));
   }
 
   @Get(':id')
@@ -58,7 +58,7 @@ export class OriginController {
   @ApiResponse({ status: 404, description: 'Origin not found.' })
   async findOne(@Param('id') id: number): Promise<OriginResponseDto> {
     const origin = await this.originService.findOne(id);
-    return plainToClass(OriginResponseDto, origin);
+    return plainToInstance(OriginResponseDto, origin);
   }
 
   @Put(':id')
@@ -74,7 +74,7 @@ export class OriginController {
     @Body() updateOriginDto: UpdateOriginDto,
   ): Promise<OriginResponseDto> {
     const origin = await this.originService.update(id, updateOriginDto);
-    return plainToClass(OriginResponseDto, origin);
+    return plainToInstance(OriginResponseDto, origin);
   }
 
   @Delete(':id')

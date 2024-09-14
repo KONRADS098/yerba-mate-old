@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProcessingMethodService } from './processing-method.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateProcessingMethodDto,
   ProcessingMethodResponseDto,
@@ -37,7 +37,7 @@ export class ProcessingMethodController {
     const processingMethod = await this.processingMethodService.create(
       createProcessingMethodDto,
     );
-    return plainToClass(ProcessingMethodResponseDto, processingMethod);
+    return plainToInstance(ProcessingMethodResponseDto, processingMethod);
   }
 
   @Get()
@@ -50,7 +50,7 @@ export class ProcessingMethodController {
   async findAll(): Promise<ProcessingMethodResponseDto[]> {
     const processingMethods = await this.processingMethodService.findAll();
     return processingMethods.map((processingMethod) =>
-      plainToClass(ProcessingMethodResponseDto, processingMethod),
+      plainToInstance(ProcessingMethodResponseDto, processingMethod),
     );
   }
 
@@ -64,7 +64,7 @@ export class ProcessingMethodController {
   @ApiResponse({ status: 404, description: 'Processing method not found.' })
   async findOne(@Param('id') id: number): Promise<ProcessingMethodResponseDto> {
     const processingMethod = await this.processingMethodService.findOne(id);
-    return plainToClass(ProcessingMethodResponseDto, processingMethod);
+    return plainToInstance(ProcessingMethodResponseDto, processingMethod);
   }
 
   @Put(':id')
@@ -83,7 +83,7 @@ export class ProcessingMethodController {
       id,
       updateProcessingMethodDto,
     );
-    return plainToClass(ProcessingMethodResponseDto, processingMethod);
+    return plainToInstance(ProcessingMethodResponseDto, processingMethod);
   }
 
   @Delete(':id')

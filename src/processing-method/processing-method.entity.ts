@@ -19,8 +19,8 @@ export class ProcessingMethod {
   @Column({ type: 'text', nullable: true })
   description!: string;
 
-  @ManyToMany(() => YerbaMate)
-  yerbaMates!: YerbaMate[];
+  @ManyToMany(() => YerbaMate, (yerbaMate) => yerbaMate.processingMethods)
+  yerbaMates?: YerbaMate[];
 
   @CreateDateColumn()
   createdAt!: Date;

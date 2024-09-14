@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { BrandService } from './brand.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateBrandDto,
   BrandResponseDto,
@@ -33,7 +33,7 @@ export class BrandController {
     @Body() createBrandDto: CreateBrandDto,
   ): Promise<BrandResponseDto> {
     const brand = await this.brandService.create(createBrandDto);
-    return plainToClass(BrandResponseDto, brand);
+    return plainToInstance(BrandResponseDto, brand);
   }
 
   @Get()
@@ -45,7 +45,7 @@ export class BrandController {
   })
   async findAll(): Promise<BrandResponseDto[]> {
     const brands = await this.brandService.findAll();
-    return brands.map((brand) => plainToClass(BrandResponseDto, brand));
+    return brands.map((brand) => plainToInstance(BrandResponseDto, brand));
   }
 
   @Get(':id')
@@ -58,7 +58,7 @@ export class BrandController {
   @ApiResponse({ status: 404, description: 'Brand not found.' })
   async findOne(@Param('id') id: number): Promise<BrandResponseDto> {
     const brand = await this.brandService.findOne(id);
-    return plainToClass(BrandResponseDto, brand);
+    return plainToInstance(BrandResponseDto, brand);
   }
 
   @Put(':id')
@@ -74,7 +74,7 @@ export class BrandController {
     @Body() updateBrandDto: UpdateBrandDto,
   ): Promise<BrandResponseDto> {
     const brand = await this.brandService.update(id, updateBrandDto);
-    return plainToClass(BrandResponseDto, brand);
+    return plainToInstance(BrandResponseDto, brand);
   }
 
   @Delete(':id')

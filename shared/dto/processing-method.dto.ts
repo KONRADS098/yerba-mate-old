@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from 'class-transformer';
 
 export class CreateProcessingMethodDto {
   @IsString()
@@ -28,6 +28,8 @@ export class ProcessingMethodResponseDto {
   description?: string;
 
   @Expose()
-  @Transform(({ obj }) => obj.yerbaMates.map((yerbaMate) => yerbaMate.id))
-  yerbaMateIds: number[];
+  @Transform(
+    ({ obj }) => obj.yerbaMates?.map((yerbaMate) => yerbaMate.id) || [],
+  )
+  yerbaMateIds?: number[];
 }

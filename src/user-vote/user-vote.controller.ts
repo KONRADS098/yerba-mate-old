@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { UserVoteService } from './user-vote.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateUserFlavorVoteDto,
   UserFlavorVoteResponseDto,
@@ -40,7 +40,7 @@ export class UserVoteController {
     @Body() createDto: CreateUserFlavorVoteDto,
   ): Promise<UserFlavorVoteResponseDto> {
     const vote = await this.userVoteService.createFlavorVote(createDto);
-    return plainToClass(UserFlavorVoteResponseDto, vote);
+    return plainToInstance(UserFlavorVoteResponseDto, vote);
   }
 
   @Get('flavor')
@@ -52,7 +52,9 @@ export class UserVoteController {
   })
   async findAllFlavorVotes(): Promise<UserFlavorVoteResponseDto[]> {
     const votes = await this.userVoteService.findAllFlavorVotes();
-    return votes.map((vote) => plainToClass(UserFlavorVoteResponseDto, vote));
+    return votes.map((vote) =>
+      plainToInstance(UserFlavorVoteResponseDto, vote),
+    );
   }
 
   @Get('flavor/:id')
@@ -67,7 +69,7 @@ export class UserVoteController {
     @Param('id') id: number,
   ): Promise<UserFlavorVoteResponseDto> {
     const vote = await this.userVoteService.findOneFlavorVote(id);
-    return plainToClass(UserFlavorVoteResponseDto, vote);
+    return plainToInstance(UserFlavorVoteResponseDto, vote);
   }
 
   @Put('flavor/:id')
@@ -83,7 +85,7 @@ export class UserVoteController {
     @Body() updateDto: UpdateUserFlavorVoteDto,
   ): Promise<UserFlavorVoteResponseDto> {
     const vote = await this.userVoteService.updateFlavorVote(id, updateDto);
-    return plainToClass(UserFlavorVoteResponseDto, vote);
+    return plainToInstance(UserFlavorVoteResponseDto, vote);
   }
 
   @Delete('flavor/:id')
@@ -110,7 +112,7 @@ export class UserVoteController {
     @Body() createDto: CreateUserLongevityVoteDto,
   ): Promise<UserLongevityVoteResponseDto> {
     const vote = await this.userVoteService.createLongevityVote(createDto);
-    return plainToClass(UserLongevityVoteResponseDto, vote);
+    return plainToInstance(UserLongevityVoteResponseDto, vote);
   }
 
   @Get('longevity')
@@ -123,7 +125,7 @@ export class UserVoteController {
   async findAllLongevityVotes(): Promise<UserLongevityVoteResponseDto[]> {
     const votes = await this.userVoteService.findAllLongevityVotes();
     return votes.map((vote) =>
-      plainToClass(UserLongevityVoteResponseDto, vote),
+      plainToInstance(UserLongevityVoteResponseDto, vote),
     );
   }
 
@@ -139,7 +141,7 @@ export class UserVoteController {
     @Param('id') id: number,
   ): Promise<UserLongevityVoteResponseDto> {
     const vote = await this.userVoteService.findOneLongevityVote(id);
-    return plainToClass(UserLongevityVoteResponseDto, vote);
+    return plainToInstance(UserLongevityVoteResponseDto, vote);
   }
 
   @Put('longevity/:id')
@@ -155,7 +157,7 @@ export class UserVoteController {
     @Body() updateDto: UpdateUserLongevityVoteDto,
   ): Promise<UserLongevityVoteResponseDto> {
     const vote = await this.userVoteService.updateLongevityVote(id, updateDto);
-    return plainToClass(UserLongevityVoteResponseDto, vote);
+    return plainToInstance(UserLongevityVoteResponseDto, vote);
   }
 
   @Delete('longevity/:id')
@@ -182,7 +184,7 @@ export class UserVoteController {
     @Body() createDto: CreateUserTemperatureVoteDto,
   ): Promise<UserTemperatureVoteResponseDto> {
     const vote = await this.userVoteService.createTemperatureVote(createDto);
-    return plainToClass(UserTemperatureVoteResponseDto, vote);
+    return plainToInstance(UserTemperatureVoteResponseDto, vote);
   }
 
   @Get('temperature')
@@ -195,7 +197,7 @@ export class UserVoteController {
   async findAllTemperatureVotes(): Promise<UserTemperatureVoteResponseDto[]> {
     const votes = await this.userVoteService.findAllTemperatureVotes();
     return votes.map((vote) =>
-      plainToClass(UserTemperatureVoteResponseDto, vote),
+      plainToInstance(UserTemperatureVoteResponseDto, vote),
     );
   }
 
@@ -211,7 +213,7 @@ export class UserVoteController {
     @Param('id') id: number,
   ): Promise<UserTemperatureVoteResponseDto> {
     const vote = await this.userVoteService.findOneTemperatureVote(id);
-    return plainToClass(UserTemperatureVoteResponseDto, vote);
+    return plainToInstance(UserTemperatureVoteResponseDto, vote);
   }
 
   @Put('temperature/:id')
@@ -230,7 +232,7 @@ export class UserVoteController {
       id,
       updateDto,
     );
-    return plainToClass(UserTemperatureVoteResponseDto, vote);
+    return plainToInstance(UserTemperatureVoteResponseDto, vote);
   }
 
   @Delete('temperature/:id')

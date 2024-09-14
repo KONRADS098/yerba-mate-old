@@ -6,7 +6,7 @@ import {
   IsPositive,
   IsString,
 } from 'class-validator';
-import { Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from 'class-transformer';
 
 export class CreateOriginDto {
   @IsString()
@@ -47,6 +47,8 @@ export class OriginResponseDto {
   description: string;
 
   @Expose()
-  @Transform(({ obj }) => obj.yerbaMates.map((yerbaMate) => yerbaMate.id))
+  @Transform(
+    ({ obj }) => obj.yerbaMates?.map((yerbaMate) => yerbaMate.id) || [],
+  )
   yerbaMateIds: number[];
 }

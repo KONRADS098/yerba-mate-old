@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { FlavorService } from './flavor.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateFlavorDto,
   FlavorResponseDto,
@@ -33,7 +33,7 @@ export class FlavorController {
     @Body() createFlavorDto: CreateFlavorDto,
   ): Promise<FlavorResponseDto> {
     const flavor = await this.flavorService.create(createFlavorDto);
-    return plainToClass(FlavorResponseDto, flavor);
+    return plainToInstance(FlavorResponseDto, flavor);
   }
 
   @Get()
@@ -45,7 +45,7 @@ export class FlavorController {
   })
   async findAll(): Promise<FlavorResponseDto[]> {
     const flavors = await this.flavorService.findAll();
-    return flavors.map((flavor) => plainToClass(FlavorResponseDto, flavor));
+    return flavors.map((flavor) => plainToInstance(FlavorResponseDto, flavor));
   }
 
   @Get(':id')
@@ -58,7 +58,7 @@ export class FlavorController {
   @ApiResponse({ status: 404, description: 'Flavor not found.' })
   async findOne(@Param('id') id: number): Promise<FlavorResponseDto> {
     const flavor = await this.flavorService.findOne(id);
-    return plainToClass(FlavorResponseDto, flavor);
+    return plainToInstance(FlavorResponseDto, flavor);
   }
 
   @Put(':id')
@@ -74,7 +74,7 @@ export class FlavorController {
     @Body() updateFlavorDto: UpdateFlavorDto,
   ): Promise<FlavorResponseDto> {
     const flavor = await this.flavorService.update(id, updateFlavorDto);
-    return plainToClass(FlavorResponseDto, flavor);
+    return plainToInstance(FlavorResponseDto, flavor);
   }
 
   @Delete(':id')
