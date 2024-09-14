@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { YerbaMateModule } from './yerba-mate/yerba-mate.module';
 import { UserVoteModule } from './user-vote/user-vote.module';
 import { UserModule } from './user/user.module';
@@ -7,8 +8,7 @@ import { OriginModule } from './origin/origin.module';
 import { FlavorModule } from './flavor/flavor.module';
 import { CountryModule } from './country/country.module';
 import { BrandModule } from './brand/brand.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ dotenv.config();
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
-      port: 5432,
+      port: parseInt(process.env.DB_PORT, 10),
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
