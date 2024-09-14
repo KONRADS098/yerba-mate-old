@@ -5,9 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../shared/entities/user.entity';
 import {
   UserFlavorVote,
-  UserLongevityVote,
   UserTemperatureVote,
-} from '../user-vote/user-vote.entity';
+  UserLongevityVote,
+} from '../shared/entities/user-vote.entity';
 
 @Module({
   imports: [

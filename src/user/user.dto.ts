@@ -1,9 +1,15 @@
 import { Expose, Transform } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
-import { IsEmail, IsStrongPassword } from 'class-validator';
-import { UserRole } from './user-role.enum';
+import { IsEmail, IsString, IsStrongPassword, Matches } from 'class-validator';
 
 export class CreateUserDto {
+  @IsString()
+  @Matches(/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, {
+    message:
+      'username must be 8-20 characters long, no _ or . at the beginning, no __ or _. or ._ or .. inside, allowed characters = numbers and letters, no _ or . at the end',
+  })
+  username: string;
+
   @IsEmail()
   email: string;
 
@@ -24,10 +30,10 @@ export class UserResponseDto {
   id: number;
 
   @Expose()
-  email: string;
+  username: string;
 
   @Expose()
-  role: UserRole;
+  email: string;
 
   @Expose()
   @Transform(({ obj }) => obj.flavorVotes?.map((vote) => vote.id) || [])
