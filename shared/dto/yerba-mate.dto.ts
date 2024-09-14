@@ -1,5 +1,5 @@
 import { PartialType } from '@nestjs/swagger';
-import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from '@nestjs/class-transformer';
 import {
   IsInt,
   IsPositive,
@@ -35,7 +35,6 @@ export class CreateYerbaMateDto {
 
 export class UpdateYerbaMateDto extends PartialType(CreateYerbaMateDto) {}
 
-@Exclude()
 export class YerbaMateResponseDto {
   @Expose()
   id: number;

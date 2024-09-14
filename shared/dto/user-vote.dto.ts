@@ -1,4 +1,4 @@
-import { Exclude, Expose } from '@nestjs/class-transformer';
+import { Expose } from '@nestjs/class-transformer';
 import { PartialType } from '@nestjs/swagger';
 import { IsInt, IsPositive, Max, Min } from 'class-validator';
 
@@ -25,7 +25,6 @@ export class UpdateUserFlavorVoteDto extends PartialType(
   CreateUserFlavorVoteDto,
 ) {}
 
-@Exclude()
 export class UserFlavorVoteResponseDto {
   @Expose()
   id: number;
@@ -62,7 +61,6 @@ export class UpdateUserLongevityVoteDto extends PartialType(
   CreateUserLongevityVoteDto,
 ) {}
 
-@Exclude()
 export class UserLongevityVoteResponseDto {
   @Expose()
   id: number;
@@ -96,7 +94,6 @@ export class UpdateUserTemperatureVoteDto extends PartialType(
   CreateUserTemperatureVoteDto,
 ) {}
 
-@Exclude()
 export class UserTemperatureVoteResponseDto {
   @Expose()
   id: number;

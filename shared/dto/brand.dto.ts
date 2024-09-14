@@ -1,4 +1,4 @@
-import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from '@nestjs/class-transformer';
 import { PartialType } from '@nestjs/swagger';
 import {
   IsInt,
@@ -30,7 +30,6 @@ export class CreateBrandDto {
 
 export class UpdateBrandDto extends PartialType(CreateBrandDto) {}
 
-@Exclude()
 export class BrandResponseDto {
   @Expose()
   id: number;

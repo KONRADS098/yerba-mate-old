@@ -1,4 +1,5 @@
 import { PartialType } from '@nestjs/swagger';
+import { Expose } from 'class-transformer';
 
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
@@ -15,9 +16,6 @@ export class CreateFlavorDto {
 
 export class UpdateFlavorDto extends PartialType(CreateFlavorDto) {}
 
-import { Exclude, Expose } from '@nestjs/class-transformer';
-
-@Exclude()
 export class FlavorResponseDto {
   @Expose()
   id: number;

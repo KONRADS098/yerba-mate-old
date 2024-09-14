@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CountryService } from './country.service';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import {
   CreateCountryDto,
   CountryResponseDto,
@@ -33,7 +33,7 @@ export class CountryController {
     @Body() createCountryDto: CreateCountryDto,
   ): Promise<CountryResponseDto> {
     const country = await this.countryService.create(createCountryDto);
-    return plainToClass(CountryResponseDto, country);
+    return plainToInstance(CountryResponseDto, country);
   }
 
   @Get()
@@ -46,7 +46,7 @@ export class CountryController {
   async findAll(): Promise<CountryResponseDto[]> {
     const countries = await this.countryService.findAll();
     return countries.map((country) =>
-      plainToClass(CountryResponseDto, country),
+      plainToInstance(CountryResponseDto, country),
     );
   }
 
@@ -60,7 +60,7 @@ export class CountryController {
   @ApiResponse({ status: 404, description: 'Country not found.' })
   async findOne(@Param('id') id: number): Promise<CountryResponseDto> {
     const country = await this.countryService.findOne(id);
-    return plainToClass(CountryResponseDto, country);
+    return plainToInstance(CountryResponseDto, country);
   }
 
   @Put(':id')
@@ -76,7 +76,7 @@ export class CountryController {
     @Body() updateCountryDto: UpdateCountryDto,
   ): Promise<CountryResponseDto> {
     const country = await this.countryService.update(id, updateCountryDto);
-    return plainToClass(CountryResponseDto, country);
+    return plainToInstance(CountryResponseDto, country);
   }
 
   @Delete(':id')

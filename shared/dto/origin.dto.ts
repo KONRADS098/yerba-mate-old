@@ -6,7 +6,7 @@ import {
   IsPositive,
   IsString,
 } from 'class-validator';
-import { Exclude, Expose, Transform } from '@nestjs/class-transformer';
+import { Expose, Transform } from '@nestjs/class-transformer';
 
 export class CreateOriginDto {
   @IsString()
@@ -30,7 +30,6 @@ export class CreateOriginDto {
 
 export class UpdateOriginDto extends PartialType(CreateOriginDto) {}
 
-@Exclude()
 export class OriginResponseDto {
   @Expose()
   id: number;
