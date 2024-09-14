@@ -62,11 +62,13 @@ export class YerbaMateService {
     id: number,
     updateYerbaMateDto: UpdateYerbaMateDto,
   ): Promise<YerbaMate> {
-    const processingMethods = await this.processingMethodRepository.findByIds(
-      updateYerbaMateDto.processingMethodIds,
-    );
+    const { processingMethodIds, ...yerbaMateData } = updateYerbaMateDto;
+
+    const processingMethods = await this.processingMethodRepository.findBy({
+      id: In(processingMethodIds),
+    });
     await this.yerbaMateRepository.update(id, {
-      ...updateYerbaMateDto,
+      ...yerbaMateData,
       processingMethods,
     });
     return this.findOne(id);
