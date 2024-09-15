@@ -2,7 +2,7 @@
 import { Injectable, Inject, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
-import { LoginDto } from './login.dto';
+import { LoginDto, RefreshTokenDto } from './login.dto';
 import * as bcrypt from 'bcrypt';
 import { User } from '../shared/entities/user.entity';
 import { UserRole } from '../user/user-role.enum';
@@ -62,21 +62,21 @@ export class AuthService {
     ); // 7 days expiration
 
     return {
-      access_token: accessToken,
-      refresh_token: refreshToken,
+      accessToken: accessToken,
+      refreshToken: refreshToken,
     };
   }
 
-  async refreshToken(refreshToken: string) {
+  async refreshToken(refreshTokenDto: RefreshTokenDto) {
     try {
-      const payload = this.jwtService.verify(refreshToken, {
+      const payload = this.jwtService.verify(refreshTokenDto.refreshToken, {
         secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
       });
 
       const storedRefreshToken = await this.redisClient.get(
         `refresh_token:${payload.sub}`,
       );
-      if (storedRefreshToken !== refreshToken) {
+      if (storedRefreshToken !== refreshTokenDto.refreshToken) {
         throw new UnauthorizedException('Invalid refresh token');
       }
 
@@ -106,8 +106,8 @@ export class AuthService {
       ); // 7 days expiration
 
       return {
-        access_token: newAccessToken,
-        refresh_token: newRefreshToken,
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
       };
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {

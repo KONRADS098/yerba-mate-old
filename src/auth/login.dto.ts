@@ -11,9 +11,16 @@ export class LoginDto {
 }
 
 export class LoginResponseDto {
-  @Expose({ name: 'access_token' })
+  @Expose()
   accessToken: string;
 
-  @Expose({ name: 'refresh_token' })
+  @Expose()
   refreshToken: string;
 }
+
+export class RefreshTokenDto {
+  @IsString()
+  refreshToken: string;
+}
+
+export class RefreshTokenResponseDto extends LoginResponseDto {}
