@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ProcessingMethodService } from './processing-method.service';
-import { ProcessingMethodController } from './processing-method.controller';
+import { ProcessingMethodService } from './services/processing-method.service';
+import { ProcessingMethodController } from './controllers/processing-method.controller';
 import { YerbaMate } from '../shared/entities/yerba-mate.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProcessingMethod } from '../shared/entities/processing-method.entity';

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { FlavorService } from './flavor.service';
-import { FlavorController } from './flavor.controller';
+import { FlavorService } from './services/flavor.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Flavor } from '../shared/entities/flavor.entity';
 import { UserFlavorVote } from '../shared/entities/user-vote.entity';
+import { FlavorController } from './controllers/flavor.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Flavor, UserFlavorVote])],

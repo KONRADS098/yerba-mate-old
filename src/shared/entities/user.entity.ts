@@ -4,7 +4,7 @@ import {
   UserTemperatureVote,
   UserLongevityVote,
 } from './user-vote.entity';
-import { UserRole } from '../../user/user-role.enum';
+import { UserRole } from '../../user/enums/user-role.enum';
 
 @Entity()
 export class User {

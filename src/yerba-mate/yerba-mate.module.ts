@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { YerbaMateController } from './yerba-mate.controller';
-import { YerbaMateService } from './yerba-mate.service';
+import { YerbaMateController } from './controllers/yerba-mate.controller';
+import { YerbaMateService } from './services/yerba-mate.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { YerbaMate } from '../shared/entities/yerba-mate.entity';
 import { Brand } from '../shared/entities/brand.entity';

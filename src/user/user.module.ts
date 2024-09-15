@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserController } from './user.controller';
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../shared/entities/user.entity';
 import {
@@ -8,6 +7,7 @@ import {
   UserTemperatureVote,
   UserLongevityVote,
 } from '../shared/entities/user-vote.entity';
+import { UserController } from './controllers/user.controller';
 
 @Module({
   imports: [
