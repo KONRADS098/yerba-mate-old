@@ -25,6 +25,7 @@ export class AuthController {
     return plainToInstance(LoginResponseDto, { ...tokens });
   }
 
+  @UseGuards(AuthGuard('local'))
   @Post('refresh')
   @ApiOperation({ summary: 'Refresh Token' })
   @ApiResponse({ status: 200, description: 'Token refreshed successfully' })
